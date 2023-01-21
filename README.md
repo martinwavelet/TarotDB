@@ -1,2 +1,2 @@
 # TarotDB
- Tarot dashboard
+ Tarot dashboard using dash
