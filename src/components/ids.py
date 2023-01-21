@@ -7,5 +7,6 @@ SELECT_ALL_CONTRACT_BUTTON = "select-all-contract-button"
 
 BARCHART_TAKER = "barchart-taker"
 TABLE_TAKER = "table_taker"
+TABLE_CONTRACT = "table_contract"
 LINES_RANKING = "lines-ranking"
 RANKING_CARDS = "ranking-cards"

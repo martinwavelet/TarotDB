@@ -1,5 +1,5 @@
 - carte avec lien image vers la fft (https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/ voir cardgroup)
-- carte de présentation des joueurs / carac principale ?
+OK - carte de présentation des joueurs / carac principale ?
 
 Pages:
 - dashboard
@@ -26,7 +26,9 @@ Classement
 - % réussite
 
 Stats générale
+- nombre de session
 - nombre de main
+- Points totaux distribués
 - % réussite
 - type contrats
 - qui prend

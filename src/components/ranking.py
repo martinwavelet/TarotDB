@@ -70,8 +70,8 @@ def render(app, data):
                         # className="g-0 d-flex align-items-center",
                     )
                 ],
-                className="mb-3 d-flex",
-                style={"maxWidth": "540px", "flex-direction": "row"}
+                className="d-flex",
+                style={"flex-direction": "row"}
             )
             return card
 

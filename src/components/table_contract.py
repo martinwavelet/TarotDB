@@ -4,7 +4,7 @@ from src.components import ids
 
 def render(app: Dash, data) -> html.Div():
     @app.callback(
-        Output(ids.TABLE_TAKER, "children"),
+        Output(ids.TABLE_CONTRACT, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value")]
     )
     def update_barchart(seasons, takers, contracts):
@@ -12,12 +12,12 @@ def render(app: Dash, data) -> html.Div():
         if filtered_data.shape[0] == 0:
             return html.Div("No data selected")
 
-        table_taker = filtered_data.preneur.value_counts().reset_index()
-        table_taker.columns = ['Joueur', 'Prises']
-        table_taker["%"] = round(filtered_data.preneur.value_counts().reset_index().preneur/sum(filtered_data.preneur.value_counts().reset_index().preneur)*100,1)
+        table_contract = filtered_data.prise.value_counts().reset_index()
+        table_contract.columns = ['Contrat', 'Prises']
+        table_contract["%"] = round(filtered_data.prise.value_counts().reset_index().prise/sum(filtered_data.prise.value_counts().reset_index().prise)*100,1)
 
-        table = dbc.Table.from_dataframe(table_taker, striped=True, bordered=False, hover=True, responsive=True)
+        table = dbc.Table.from_dataframe(table_contract, striped=True, bordered=False, hover=True, responsive=True)
 
-        return html.Div(table, id=ids.TABLE_TAKER)
+        return html.Div(table, id=ids.TABLE_CONTRACT)
 
-    return html.Div(id=ids.TABLE_TAKER)
+    return html.Div(id=ids.TABLE_CONTRACT)
