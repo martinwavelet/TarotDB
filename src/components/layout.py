@@ -33,14 +33,14 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                     dbc.Card([
                         html.H4("Evolution du nombre de points par main et par joueur", className="mb-0 text-center"),
                         lines_ranking.render(app, unpivot_data)
-                    ], body=True), label="Tab 1"
+                    ], body=True), label="Static", tabClassName="ms-auto",
                 ),
 
                 dbc.Tab(
                     dbc.Card([
                         html.H4("Evolution du nombre de points par main et par joueur", className="mb-0 text-center"),
                         lines_rankinganimated.render(app, unpivot_data)
-                    ], body=True), label="Tab 2"
+                    ], body=True), label="Animated"
                 )
             ]),
             html.Br(),
