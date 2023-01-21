@@ -1,0 +1,35 @@
+- carte avec lien image vers la fft (https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/ voir cardgroup)
+- carte de présentation des joueurs / carac principale ?
+
+Pages:
+- dashboard
+- leaderboard
+- infos (carte des joueurs
+
+Navbar
+- logo
+- titre
+- 3 boutons nav page0
+- switch thems :https://hellodash.pythonanywhere.com/adding-themes/theme-switch
+
+graph:
+1 classement point
+2 qui prend quoi = barchart sur 100% pour comparer les % de prises
+3 animated lines
+A voir le reste
+
+Classement
+5 cards avec
+- place
+- points
+- % prise
+- % réussite
+
+Stats générale
+- nombre de main
+- % réussite
+- type contrats
+- qui prend
+
+https://hellodash.pythonanywhere.com/
+https://dashcheatsheet.pythonanywhere.com/
