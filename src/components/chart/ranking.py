@@ -70,8 +70,7 @@ def render(app, data):
                         # className="g-0 d-flex align-items-center",
                     )
                 ],
-                className="d-flex",
-                style={"flex-direction": "row"}
+                className="d-flex ranking-card",
             )
             return card
 
