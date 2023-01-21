@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 def render(app: Dash, data) -> html.Div():
     @app.callback(
-        Output(ids.LINES_RANKING, "children"),
+        Output(ids.LINES_RANKING_ANIMATED, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value")]
     )
     def update_barchart(seasons, takers, contracts):
@@ -55,9 +55,8 @@ def render(app: Dash, data) -> html.Div():
                        traces=[0, 1, 2, 3, 4],
                        ) for k in range(1, len(filtered_data[filtered_data.joueur == "Antoine"]) - 1)]
 
-        layout = go.Layout(width=1400,
-                           height=600,
-                           showlegend=False,
+        layout = go.Layout(
+                           showlegend=True,
                            hovermode='x unified',
                            updatemenus=[
                                dict(
@@ -65,7 +64,7 @@ def render(app: Dash, data) -> html.Div():
                                    y=1.05,
                                    x=1.15,
                                    xanchor='right',
-                                   yanchor='top',
+                                   yanchor='middle',
                                    pad=dict(t=0, r=10),
                                    buttons=[dict(label='Play',
                                                  method='animate',
@@ -84,7 +83,8 @@ def render(app: Dash, data) -> html.Div():
                       yaxis=dict(range=[filtered_data.points_cumules.min(), filtered_data.points_cumules.max()], autorange=False))
 
         fig = go.Figure(data=[antoine, martin, seb, lulu, simon], frames=frames, layout=layout)
+        fig.update_layout(xaxis_title="Main", yaxis_title="Points")
 
-        return html.Div(dcc.Graph(figure=fig), id=ids.LINES_RANKING)
+        return html.Div(dcc.Graph(figure=fig), id=ids.LINES_RANKING_ANIMATED)
 
-    return html.Div(id=ids.LINES_RANKING)
+    return html.Div(id=ids.LINES_RANKING_ANIMATED)

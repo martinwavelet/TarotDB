@@ -1,6 +1,8 @@
 import pandas as pd
 from dash import Dash, html
-from src.components import season_dropdown, barchart_taker, lines_ranking, taker_dropdown, table_taker, table_contract, contract_dropdown, ranking
+from src.components.filters import taker_dropdown, season_dropdown, contract_dropdown
+from src.components.chart import barchart_taker, table_taker, ranking, table_contract, lines_ranking
+from src.components.chart_test import lines_rankinganimated
 from src.components.navigation import navbar
 import dash_bootstrap_components as dbc
 
@@ -26,10 +28,21 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
             html.Br(),
 
             # LINES
-            dbc.Card([
-                html.H4("Evolution du nombre de points par main et par joueur", className="mb-0 text-center"),
-                lines_ranking.render(app, unpivot_data)
-            ], body=True),
+            dbc.Tabs([
+                dbc.Tab(
+                    dbc.Card([
+                        html.H4("Evolution du nombre de points par main et par joueur", className="mb-0 text-center"),
+                        lines_ranking.render(app, unpivot_data)
+                    ], body=True), label="Tab 1"
+                ),
+
+                dbc.Tab(
+                    dbc.Card([
+                        html.H4("Evolution du nombre de points par main et par joueur", className="mb-0 text-center"),
+                        lines_rankinganimated.render(app, unpivot_data)
+                    ], body=True), label="Tab 2"
+                )
+            ]),
             html.Br(),
 
             # TAKERS
