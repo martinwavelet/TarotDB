@@ -26,7 +26,7 @@ def render(app: Dash, unpivot_data) -> html.Div():
         fig = px.bar(contracts_by_player, x="preneur", y="%", color="prise", barmode="stack", color_discrete_map=color_map,
                      text="%", category_orders={"prise":["Petite", "Garde", "Garde sans", "Garde contre"]})
         fig.update_layout(legend_orientation="h", legend_title ="Contrats", legend_tracegroupgap=20, xaxis_title=None)
-        fig.update_traces(texttemplate='%{text}%')
+        fig.update_traces(texttemplate='%{text} %')
         fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
 
         return html.Div(dcc.Graph(figure=fig), id=ids.BARCHART_TAKER)
