@@ -15,13 +15,13 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
             # FILTRES
             dbc.Card([
                 dbc.Row([
-                    dbc.Col(html.H4("FILTRES", className="mb-0"), width=12, align="center", lg=1),
+                    dbc.Col(width=12, align="center", lg=1, className="filters-header"),
                     dbc.Col(season_dropdown.render(app, data), width=12, lg=3),
                     dbc.Col(taker_dropdown.render(app, data), width=12, lg=4),
                     dbc.Col(contract_dropdown.render(app, data), width=12, lg=4)
                 ], align="center"
-            )], body=True),
-            html.Br(),
+            )], className="filters"),
+            html.Hr(),
 
             # RANKING
             ranking.render(app, unpivot_data),
@@ -33,14 +33,14 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                     dbc.Card([
                         html.H4("Evolution du nombre de points par main et par joueur", className="mb-0 text-center"),
                         lines_ranking.render(app, unpivot_data)
-                    ], body=True), label="Static", tabClassName="ms-auto",
+                    ], body=True, className="graph-card"), label="Static", tabClassName="ms-auto",
                 ),
 
                 dbc.Tab(
                     dbc.Card([
                         html.H4("Evolution du nombre de points par main et par joueur", className="mb-0 text-center"),
                         lines_rankinganimated.render(app, unpivot_data)
-                    ], body=True), label="Animated"
+                    ], body=True, className="graph-card"), label="Animated"
                 )
             ]),
             html.Br(),
@@ -52,14 +52,14 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                         html.H4("Nombre de prises par joueur", className="mb-0 text-center"),
                         html.Br(),
                         table_taker.render(app, data)
-                    ], body=True)
+                    ], body=True, className="graph-card")
                 ], width=12, lg=3),
 
                 dbc.Col([
                     dbc.Card([
                         html.H4("Type de prises par joueur", className="mb-0 text-center"),
                         barchart_taker.render(app, unpivot_data)
-                    ], body=True)
+                    ], body=True, className="graph-card")
                 ], width=12, lg=6),
 
                 dbc.Col([
@@ -67,7 +67,7 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                         html.H4("Nombre de contrats réalisés", className="mb-0 text-center"),
                         html.Br(),
                         table_contract.render(app, data)
-                    ], body=True)
+                    ], body=True, className="graph-card")
                 ], width=12, lg=3),
             ]),
             html.Br()
