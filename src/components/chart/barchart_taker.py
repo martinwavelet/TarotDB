@@ -1,6 +1,7 @@
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
 from src.components import ids
+import datetime as dt
 
 def render(app: Dash, unpivot_data) -> html.Div():
     color_map = {
@@ -12,10 +13,10 @@ def render(app: Dash, unpivot_data) -> html.Div():
 
     @app.callback(
         Output(ids.BARCHART_TAKER, "children"),
-        [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value")]
+        [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )
-    def update_barchart(seasons, takers, contracts):
-        filtered_data = unpivot_data.query("saison in @seasons and preneur in @takers and prise in @contracts")
+    def update_barchart(seasons, takers, contracts, dates):
+        filtered_data = unpivot_data.query("saison in @seasons and preneur in @takers and prise in @contracts and date in @dates")
         if filtered_data.shape[0] == 0:
             return html.Div("No data selected")
 

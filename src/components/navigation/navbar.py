@@ -20,8 +20,7 @@ def render():
         ],
         brand="Tarot Dashboard",
         brand_href="#",
-        color="primary",
-        dark=True,
+        className="top-navbar",
     )
 
     return navbar

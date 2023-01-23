@@ -2,14 +2,15 @@ from dash import html, Input, Output
 import dash_bootstrap_components as dbc
 from src.components import ids
 import random
+import datetime as dt
 
 def render(app, data):
     @app.callback(
         Output(ids.RANKING_CARDS, "children"),
-        [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value")]
+        [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )
-    def render_cards(seasons, takers, contracts):
-        filtered_data = data.query("saison in @seasons and preneur in @takers and prise in @contracts")
+    def render_cards(seasons, takers, contracts, dates):
+        filtered_data = data.query("saison in @seasons and preneur in @takers and prise in @contracts and date in @dates")
         if filtered_data.shape[0] == 0:
             return html.Div("No data selected")
 

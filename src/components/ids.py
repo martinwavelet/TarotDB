@@ -4,6 +4,7 @@ TAKER_DROPDOWN = "taker-dropdown"
 SELECT_ALL_TAKER_BUTTON = "select-all-taker-button"
 CONTRACT_DROPDOWN = "contract-dropdown"
 SELECT_ALL_CONTRACT_BUTTON = "select-all-contract-button"
+DATE_DROPDOWN = "DATE-dropdown"
 
 BARCHART_TAKER = "barchart-taker"
 TABLE_TAKER = "table_taker"

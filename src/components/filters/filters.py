@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 from dash import html, dcc
 
-from src.components.filters import season_dropdown, taker_dropdown, contract_dropdown
+from src.components.filters import season_dropdown, taker_dropdown, contract_dropdown, date_dropdown
 
 
 def render(app, data):
@@ -16,7 +16,8 @@ def render(app, data):
             [
                 dbc.Col(season_dropdown.render(app, data)),
                 dbc.Col(taker_dropdown.render(app, data)),
-                dbc.Col(contract_dropdown.render(app, data))
+                dbc.Col(contract_dropdown.render(app, data)),
+                dbc.Col(date_dropdown.render(app, data))
             ],
             className="filters"
         ),

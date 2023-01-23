@@ -1,3 +1,5 @@
+navbar color : DarkSeaGreen
+
 - carte avec lien image vers la fft (https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/ voir cardgroup)
 OK - carte de présentation des joueurs / carac principale ?
 

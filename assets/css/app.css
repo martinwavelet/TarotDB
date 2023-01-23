@@ -76,14 +76,14 @@
     }
 
     #filters-toggle-checkbox:checked + #filters-toggle {
-        bottom: 350px;
+        bottom: 450px;
         transition-property: bottom;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 500ms;
     }
 
     #filters-toggle-checkbox:checked ~ .filters {
-        height: 335px;
+        height: 435px;
         padding: 10px;
         transition-property: height, padding;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -117,7 +117,7 @@
     border-bottom-left-radius: 0.5rem;
 }
 
-.card-medal-img{
+.card-medal-img {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -130,24 +130,38 @@
     filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
 }
 
-body{
-    background: #ebf4ef;
+body {
+    background: #f7f7f7;
 }
 
-.chart-table td{
+.chart-table td {
     padding: 1rem;
 }
 
-.chart-table th{
+.chart-table th {
     text-size: 0.675rem;
     padding: 1rem;
 }
 
-.chart-table td{
+.chart-table td {
     text-size: 0.675rem;
 }
 
-.tab-lines a{
+.tab-lines a {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+}
+
+.top-navbar {
+    background: linear-gradient(121deg, rgba(172,185,171,0.227328431372549) 0%, rgba(172,185,171,0.8491771708683473) 7%, rgba(165,187,163,0.9051995798319328) 12%, rgba(143,188,139,1) 24%), url("../img/tarot_deck_bw.png");
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+    border-style: none;
+    color: black;
+}
+
+.navbar-brand {
+    color: #f3fbf2;
+    margin-left: 9%;
+    font-size: 28px;
+    font-family: 'Fjalla One;
 }
