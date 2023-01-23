@@ -131,5 +131,23 @@
 }
 
 body{
-background: #ebf4ef;
+    background: #ebf4ef;
+}
+
+.chart-table td{
+    padding: 1rem;
+}
+
+.chart-table th{
+    text-size: 0.675rem;
+    padding: 1rem;
+}
+
+.chart-table td{
+    text-size: 0.675rem;
+}
+
+.tab-lines a{
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }

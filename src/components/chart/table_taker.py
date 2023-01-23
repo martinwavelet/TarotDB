@@ -12,12 +12,14 @@ def render(app: Dash, data) -> html.Div():
         if filtered_data.shape[0] == 0:
             return html.Div("No data selected")
 
-        table_taker = filtered_data.preneur.value_counts().reset_index()
-        table_taker.columns = ['Joueur', 'Prises']
-        table_taker["%"] = round(filtered_data.preneur.value_counts().reset_index().preneur/sum(filtered_data.preneur.value_counts().reset_index().preneur)*100,1)
+        table_taker = filtered_data.groupby(["preneur"]).sum().reset_index()[["preneur","contrat_rempli","count"]].sort_values(by="count", ascending=False)
+        table_taker.columns = ["Joueur", "contrat_rempli", "Prises"]
+        table_taker["Réussies"] = round(table_taker.contrat_rempli/table_taker.Prises*100,0).astype(int).astype(str) + "%"
+        table_taker = table_taker.drop(["contrat_rempli"], axis=1)
+
 
         table = dbc.Table.from_dataframe(table_taker, striped=True, bordered=False, hover=True, responsive=True)
 
-        return html.Div(table, id=ids.TABLE_TAKER)
+        return html.Div(table, id=ids.TABLE_TAKER, className="chart-table")
 
     return html.Div(id=ids.TABLE_TAKER)

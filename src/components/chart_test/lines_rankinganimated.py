@@ -4,6 +4,14 @@ from src.components import ids
 import plotly.graph_objects as go
 
 def render(app: Dash, data) -> html.Div():
+    color_map = {
+        "Seb": "#80ffa8",
+        "Martin": "#80bfff",
+        "Antoine": "#ffb380",
+        "Lulu": "#e2b3ff",
+        "Simon": "#ff8080"
+    }
+
     @app.callback(
         Output(ids.LINES_RANKING_ANIMATED, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value")]
@@ -18,23 +26,28 @@ def render(app: Dash, data) -> html.Div():
         antoine = go.Scatter(x=filtered_data[filtered_data.joueur == "Antoine"]['main'][:2],
                             y=filtered_data[filtered_data.joueur == "Antoine"]['points_cumules'][:2],
                             mode='lines',
-                            line=dict(width=1.5))
+                            line=dict(width=2, color=color_map["Antoine"]),
+                            name="Antoine")
         martin = go.Scatter(x=filtered_data[filtered_data.joueur == "Martin"]['main'][:2],
                             y=filtered_data[filtered_data.joueur == "Martin"]['points_cumules'][:2],
                             mode='lines',
-                            line=dict(width=1.5))
+                            line=dict(width=2, color=color_map["Martin"]),
+                            name="Martin")
         lulu = go.Scatter(x=filtered_data[filtered_data.joueur == "Lulu"]['main'][:2],
                             y=filtered_data[filtered_data.joueur == "Lulu"]['points_cumules'][:2],
                             mode='lines',
-                            line=dict(width=1.5))
+                            line=dict(width=2, color=color_map["Lulu"]),
+                            name="Lulu")
         seb = go.Scatter(x=filtered_data[filtered_data.joueur == "Seb"]['main'][:2],
                             y=filtered_data[filtered_data.joueur == "Seb"]['points_cumules'][:2],
                             mode='lines',
-                            line=dict(width=1.5))
+                            line=dict(width=2, color=color_map["Seb"]),
+                            name="Seb")
         simon = go.Scatter(x=filtered_data[filtered_data.joueur == "Simon"]['main'][:2],
                             y=filtered_data[filtered_data.joueur == "Simon"]['points_cumules'][:2],
                             mode='lines',
-                            line=dict(width=1.5))
+                            line=dict(width=2, color=color_map["Simon"]),
+                            name="Simon")
 
         frames = [dict(data=[dict(type='scatter',
                                   x=filtered_data[filtered_data.joueur == "Antoine"]['main'][:k + 1],
@@ -82,9 +95,10 @@ def render(app: Dash, data) -> html.Div():
         layout.update(xaxis=dict(range=[filtered_data.main.min(), filtered_data.main.max()], autorange=False),
                       yaxis=dict(range=[filtered_data.points_cumules.min(), filtered_data.points_cumules.max()], autorange=False))
 
-        fig = go.Figure(data=[antoine, martin, seb, lulu, simon], frames=frames, layout=layout)
+        fig = go.Figure(data=[antoine, martin, lulu, seb, simon], frames=frames, layout=layout)
         fig.update_layout(xaxis_title="Main", yaxis_title="Points")
-
+        fig.update_layout(hovermode='x unified')
+        fig.update_layout(legend_title="Joueurs")
         return html.Div(dcc.Graph(figure=fig), id=ids.LINES_RANKING_ANIMATED)
 
     return html.Div(id=ids.LINES_RANKING_ANIMATED)

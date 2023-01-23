@@ -26,8 +26,16 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                                 dbc.Card([
                                     html.H4("Evolution du nombre de points par main et par joueur",
                                             className="mb-0 text-center"),
-                                    lines_ranking.render(app, unpivot_data)
-                                ], body=True, className="graph-card"), label="Static", tabClassName="ms-auto",
+                                    lines_ranking.render(app, unpivot_data, "points")
+                                ], body=True, className="graph-card"), label="Points", tabClassName="ms-auto tab-lines",
+                            ),
+
+                            dbc.Tab(
+                                dbc.Card([
+                                    html.H4("Evolution du nombre de points par main et par joueur",
+                                            className="mb-0 text-center"),
+                                    lines_ranking.render(app, unpivot_data, "classement")
+                                ], body=True, className="graph-card"), label="Classement", tabClassName="tab-lines",
                             ),
 
                             dbc.Tab(
@@ -35,7 +43,7 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                                     html.H4("Evolution du nombre de points par main et par joueur",
                                             className="mb-0 text-center"),
                                     lines_rankinganimated.render(app, unpivot_data)
-                                ], body=True, className="graph-card"), label="Animated"
+                                ], body=True, className="graph-card"), label="Animated", tabClassName="tab-lines",
                             )
                         ]),
                         html.Br(),

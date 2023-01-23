@@ -3,6 +3,13 @@ import plotly.express as px
 from src.components import ids
 
 def render(app: Dash, unpivot_data) -> html.Div():
+    color_map = {
+        "Petite": "#D4EFDF",
+        "Garde": "#7DCEA0",
+        "Garde sans": "#229954",
+        "Garde contre": "#145A32"
+    }
+
     @app.callback(
         Output(ids.BARCHART_TAKER, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value")]
@@ -17,12 +24,6 @@ def render(app: Dash, unpivot_data) -> html.Div():
         contracts_by_player["Percentage"] = round(contracts_by_player['Percentage'], 1)
         contracts_by_player.columns = ["preneur", "prise", "n", "%"]
 
-        color_map={
-            "Petite": "#D4EFDF",
-            "Garde": "#7DCEA0",
-            "Garde sans": "#229954",
-            "Garde contre": "#145A32"
-        }
         fig = px.bar(contracts_by_player, x="preneur", y="%", color="prise", barmode="stack", color_discrete_map=color_map,
                      text="%", category_orders={"prise":["Petite", "Garde", "Garde sans", "Garde contre"]})
         fig.update_layout(legend_orientation="h", legend_title ="Contrats", legend_tracegroupgap=20, xaxis_title=None)
