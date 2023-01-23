@@ -47,14 +47,14 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                                     html.H4("Nombre de prises par joueur", className="mb-0 text-center"),
                                     html.Br(),
                                     table_taker.render(app, data)
-                                ], body=True, className="graph-card")
+                                ], body=True, className="graph-card", style={"height": "100%"})
                             ], width=12, lg=3),
 
                             dbc.Col([
                                 dbc.Card([
                                     html.H4("Type de prises par joueur", className="mb-0 text-center"),
                                     barchart_taker.render(app, unpivot_data)
-                                ], body=True, className="graph-card")
+                                ], body=True, className="graph-card", style={"height": "100%"})
                             ], width=12, lg=6),
 
                             dbc.Col([
@@ -62,7 +62,7 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                                     html.H4("Nombre de contrats réalisés", className="mb-0 text-center"),
                                     html.Br(),
                                     table_contract.render(app, data)
-                                ], body=True, className="graph-card")
+                                ], body=True, className="graph-card", style={"height": "100%"})
                             ], width=12, lg=3),
                         ]),
                         html.Br()
