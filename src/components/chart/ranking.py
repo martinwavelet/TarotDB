@@ -34,6 +34,14 @@ def render(app, data):
                 5 : "#d10000"
             }
 
+            player_color = {
+                "Seb" : "#80ffa8",
+                "Martin" : "#80bfff",
+                "Antoine" : "#ffb380",
+                "Lulu" : "#e2b3ff",
+                "Simon" : "#ff8080"
+            }
+
             card = dbc.Card(
                 [
                     # dbc.Row(
@@ -48,14 +56,16 @@ def render(app, data):
                                 className="col-md-4",
                                 style={'height': '100%'}
                             ),
+                            html.Img(src=f"/assets/img/cards/card_medal_{rank}.png", className="card-medal-img"),
                             dbc.Col(
                                 dbc.CardBody(
                                     [
-                                        html.H4(f"#{rank} {player_name}", style={'color': rank_color[rank]}, className="card-title"),
+                                        html.H4(f"{player_name}", style={'color': rank_color[rank]}, className="card-title"),
+                                        html.Br(),
                                         html.P([
-                                            f"{player_points} pts", html.Br(),
+                                            html.Strong(f"{player_points} pts"), html.Br(),
                                             f"{player_take_rate}% de prises ", html.Br(),
-                                            f"{player_take_success_rate}% de prises réussies"],
+                                            f"{player_take_success_rate}% réussies"],
                                             className="card-text",
                                         ),
                                         html.Small(
@@ -71,6 +81,7 @@ def render(app, data):
                     )
                 ],
                 className="d-flex ranking-card",
+                style={"background": f"linear-gradient(to bottom right, white 30%, white, {player_color[player_name]})"}
             )
             return card
 
