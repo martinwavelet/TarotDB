@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 from dash import Dash, html
 
-from src.components.chart import barchart_taker, table_taker, ranking, table_contract, lines_ranking
+from src.components.chart import barchart_taker, table_taker, ranking, table_contract, lines_ranking, sankey_chart
 from src.components.chart_test import lines_rankinganimated
 from src.components.filters import filters
 from src.components.navigation import navbar
@@ -73,7 +73,19 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                                 ], body=True, className="graph-card", style={"height": "100%"})
                             ], width=12, lg=3),
                         ]),
-                        html.Br()
+                        html.Br(),
+
+                        dbc.Card([
+                            html.H4("Mais avec qui tu joues ?",
+                                    className="mb-0 text-center"),
+                            dbc.Row([
+                                dbc.Col(html.P("Preneur"), width=4, className="text-center mt-2"),
+                                dbc.Col(html.P("Coéquipier"), width=4, className="text-center mt-2"),
+                                dbc.Col(html.P("Réussite"), width=4, className="text-center mt-2"),
+                            ]),
+                            sankey_chart.render(app, data)
+                        ], body=True, className="graph-card"),
+                    html.Br(),
                     ], width=12, lg=9
                 )
             ]),

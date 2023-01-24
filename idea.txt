@@ -20,20 +20,15 @@ graph:
 3 animated lines
 A voir le reste
 
-Classement
-5 cards avec
-- place
-- points
-- % prise
-- % réussite
 
 Stats générale
 - nombre de session
 - nombre de main
 - Points totaux distribués
-- % réussite
-- type contrats
-- qui prend
+- duo le plus fréquent
+- + gros gain
+- + grosse perte
+
 
 https://hellodash.pythonanywhere.com/
 https://dashcheatsheet.pythonanywhere.com/

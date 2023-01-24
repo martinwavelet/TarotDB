@@ -153,7 +153,7 @@ body {
 }
 
 .top-navbar {
-    background: linear-gradient(121deg, rgba(172,185,171,0.227328431372549) 0%, rgba(172,185,171,0.8491771708683473) 7%, rgba(165,187,163,0.9051995798319328) 12%, rgba(143,188,139,1) 24%), url("../img/tarot_deck_bw.png");
+    background: linear-gradient(121deg, rgba(172,185,171,0.227328431372549) 0%, rgba(172,185,171,0.8491771708683473) 7%, rgba(165,187,163,0.9051995798319328) 12%, rgba(143,188,139,1) 24%, rgba(143,188,139,1) 76%, rgba(165,187,163,0.9051995798319328) 88%, rgba(172,185,171,0.8491771708683473) 93%, rgba(172,185,171,0.227328431372549) 100%), url("../img/tarot_deck_green.png");
     filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
     border-style: none;
     color: black;
