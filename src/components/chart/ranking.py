@@ -19,7 +19,11 @@ def render(app, data):
             player_name = ranks.iloc[rank-1,0]
             player_points = ranks.iloc[rank-1,1]
             player_take_rate = round(filtered_data[filtered_data.preneur == player_name].main.nunique()/filtered_data.main.nunique()*100,1)
-            player_take_success_rate = round(filtered_data[(filtered_data.preneur == player_name) & (filtered_data.contrat_rempli == 1)].main.nunique()/filtered_data[filtered_data.preneur == player_name].main.nunique()*100,1)
+            if filtered_data[filtered_data.preneur == player_name].main.nunique()*100 > 0:
+                player_take_success_rate = round(filtered_data[(filtered_data.preneur == player_name) & (filtered_data.contrat_rempli == 1)].main.nunique()/filtered_data[filtered_data.preneur == player_name].main.nunique()*100,1)
+            else:
+                player_take_success_rate = 0
+
             player_citation = {
                 "Martin" : ["Le roi déchu", "Tu connais RocketLeague ?", "Mauvais perdant"],
                 "Seb" : ["Le portugais volant", "Jamais sans son thé", "SIUUUUUUUUUUUUUU", "Le roi caché"],
