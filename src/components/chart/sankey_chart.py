@@ -82,7 +82,7 @@ def render(app: Dash, data) -> html.Div():
         ]
 
         # data to dict, dict to sankey
-        link = dict(source=source, target=target, value=value, color=color_link)
+        link = dict(source=source, target=target, value=value, color=color_link,)
         node = dict(label=label, pad=20, thickness=20, color=color_node)
         sankey = go.Sankey(link=link, node=node)
 

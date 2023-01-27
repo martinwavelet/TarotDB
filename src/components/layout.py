@@ -1,8 +1,8 @@
 import dash_bootstrap_components as dbc
 import pandas as pd
-from dash import Dash, html
+from dash import Dash, html, dcc
 
-from src.components.chart import barchart_taker, table_taker, ranking, table_contract, lines_ranking, sankey_chart
+from src.components.chart import barchart_taker, table_taker, ranking, table_contract, lines_ranking, sankey_chart, global_cards
 from src.components.chart_test import lines_rankinganimated
 from src.components.filters import filters
 from src.components.navigation import navbar
@@ -13,7 +13,26 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
         navbar.render(),
         dbc.Container(
             dbc.Row([
-                dbc.Col(filters.render(app, data), width=12, lg=3),
+                dbc.Col([
+                    filters.render(app, data),
+                    html.Hr(),
+                    global_cards.render(app, data),
+                    html.Hr(),
+
+                    dbc.Card([
+                        dbc.Row([
+                            dbc.Col(html.Img(src=f"/assets/img/fft.png", className="img-fluid"), width=3,
+                                    lg=3, style={"margin": "auto"}),
+                            dbc.Col([
+                                dbc.Row(html.H4("Remerciements FFT")),
+                                dbc.Row(html.P("Nous remercions chaleuresement la Fédération Française de Tarot, représenté tous les dimanches soirs par Antoine. Ils nous apportent clareté et justice lorsque les plus perfides d'entre nous cherchent l'entourloupe.")),
+                                dbc.Row(html.A("N'hésitez pas à consulter les règles officielles.", href="https://fftarot.fr/assets/documents/Reglement%20FFT.pdf"))
+                            ], width=12, lg=9)
+                        ])
+                    ], className="fft-card"),
+
+                html.Br(),
+                ], width=12, lg=3),
                 dbc.Col(
                     [
                         # RANKING
