@@ -165,3 +165,47 @@ body {
     font-size: 28px;
     font-family: 'Fjalla One;
 }
+
+.global-card {
+    border: none;
+    border-radius: 0.5rem;
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+    background: linear-gradient(to bottom right, white, #e4f5e8);
+    padding: 2em 2em 1em 2em;
+}
+
+.global-card h4 {
+    text-align: center;
+    text-shadow: 3px 3px 5px lightgrey;
+    font-size: 2.5em;
+}
+
+.global-card p {
+    text-align: center;
+}
+
+.global-card img {
+    width: 100%;
+    height: auto;
+}
+
+.fft-card {
+    border: none;
+    border-radius: 0.5rem;
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+    padding: 1em;
+}
+
+.global-card h4 {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.global-card p {
+    text-align: center;
+}
+
+.global-card img {
+    width: 100%;
+    height: auto;
+}
