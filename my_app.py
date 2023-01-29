@@ -8,14 +8,14 @@ DATA_PATH = "./data/tarot_dataset.csv"
 load_figure_template(LUX)
 
 
-def main() -> None:
-    data = load_tarot_data(DATA_PATH)
-    unpivot_data = unpivot_tarot_data(data)
-    app = Dash(__name__, external_stylesheets=[LUX])
-    app.title = "Tarot dashboard"
-    app.layout = create_layout(app, data, unpivot_data)
-    app.run()
+data = load_tarot_data(DATA_PATH)
+unpivot_data = unpivot_tarot_data(data)
+app = Dash(__name__, external_stylesheets=[LUX])
+server = app.server
+app.title = "Tarot dashboard"
+app.layout = create_layout(app, data, unpivot_data)
+app.run()
 
 
 if __name__ == "__main__":
-    main()
+    app.run_server(debug=False)
