@@ -53,8 +53,7 @@ def render(app, data):
                     #     [
                             dbc.Col(
                                 dbc.CardImg(
-                                    src=f"/assets/img/cards/{player_name}.png",
-                                    # src="https://picsum.photos/1000/700",
+                                    src=f"/assets/img/cards/{player_name.lower()}.png",
                                     className="img-fluid",
                                     style={'height': '100%', 'object-fit': 'cover'}
                                 ),
