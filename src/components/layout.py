@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 from dash import Dash, html, dcc
 
-from src.components.chart import barchart_taker, table_taker, ranking, table_contract, lines_ranking, sankey_chart, global_cards
+from src.components.chart import barchart_taker, table_taker, ranking, table_contract, lines_ranking, sankey_chart, global_cards,duo_perf
 from src.components.chart_test import lines_rankinganimated
 from src.components.filters import filters
 from src.components.navigation import navbar
@@ -97,12 +97,17 @@ def create_layout(app: Dash, data: pd.DataFrame, unpivot_data):
                         dbc.Card([
                             html.H4("Mais avec qui tu joues ?",
                                     className="mb-0 text-center"),
+                            html.Br(),
                             dbc.Row([
-                                dbc.Col(html.P("Preneur"), width=4, className="text-center mt-2"),
+                                dbc.Col(html.H4(""), width=4, className="text-center mt-2"),
+                                dbc.Col(html.P("Preneur"), width=2, className="text-center mt-2"),
                                 dbc.Col(html.P("Coéquipier"), width=4, className="text-center mt-2"),
-                                dbc.Col(html.P("Réussite"), width=4, className="text-center mt-2"),
+                                dbc.Col(html.P("Réussite"), width=2, className="text-center mt-2"),
                             ]),
-                            sankey_chart.render(app, data)
+                            dbc.Row([
+                                dbc.Col(duo_perf.render(app, data), width=12, lg=4),
+                                dbc.Col(sankey_chart.render(app, data), width=12, lg=8)
+                            ])
                         ], body=True, className="graph-card"),
                     html.Br(),
                     ], width=12, lg=9
