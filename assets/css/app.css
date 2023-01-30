@@ -210,3 +210,47 @@ body {
     width: 100%;
     height: auto;
 }
+
+.duo-img-boss {
+    border: solid #80B548;
+    border-radius: 50%;
+    width: 50%;
+    padding: 0;
+    margin: auto;
+    position: relative;
+    left: 10%
+}
+
+.duo-img-boss-2 {
+    border: solid #80B548;
+    border-radius: 50%;
+    width: 50%;
+    padding: 0;
+    margin: auto;
+    position: relative;
+    left: -10%
+}
+
+.duo-img-flop {
+    border: solid #D33F3C;
+    border-radius: 50%;
+    width: 50%;
+    padding: 0;
+    margin: auto;
+    position: relative;
+    left: 10%
+}
+
+.duo-img-flop-2 {
+    border: solid #D33F3C;
+    border-radius: 50%;
+    width: 50%;
+    padding: 0;
+    margin: auto;
+    position: relative;
+    left: -10%
+}
+
+.duo-text {
+text-align: center;
+}
