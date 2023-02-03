@@ -21,7 +21,6 @@ def render(app: Dash, data) -> html.Div():
             preneur = row.preneur
             teammate = row.teammate
             team = sorted([row.preneur, row.teammate])
-            print(team)
             equipe.append(team)
             p1.append(team[0])
             p2.append(team[1])
