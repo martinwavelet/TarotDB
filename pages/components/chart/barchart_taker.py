@@ -1,9 +1,9 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
-from src.components import ids
+from pages.components import ids
 import datetime as dt
 
-def render(app: Dash, unpivot_data) -> html.Div():
+def render(unpivot_data) -> html.Div():
     color_map = {
         "Petite": "#D4EFDF",
         "Garde": "#7DCEA0",
@@ -11,7 +11,7 @@ def render(app: Dash, unpivot_data) -> html.Div():
         "Garde contre": "#145A32"
     }
 
-    @app.callback(
+    @callback(
         Output(ids.BARCHART_TAKER, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )

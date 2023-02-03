@@ -1,9 +1,9 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
-from src.components import ids
+from pages.components import ids
 import datetime as dt
 
-def render(app: Dash, data, mode) -> html.Div():
+def render(data, mode) -> html.Div():
     id = ids.LINES_RANKING_POINTS if mode == "points" else ids.LINES_RANKING_RANK
 
     color_map = {
@@ -14,7 +14,7 @@ def render(app: Dash, data, mode) -> html.Div():
         "Simon": "#ff8080"
     }
 
-    @app.callback(
+    @callback(
         Output(id, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )

@@ -1,10 +1,10 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc
-from src.components import ids
+from pages.components import ids
 import datetime as dt
 
-def render(app: Dash, data) -> html.Div():
-    @app.callback(
+def render(data) -> html.Div():
+    @callback(
         Output(ids.TABLE_TAKER, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )

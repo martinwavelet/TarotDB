@@ -1,11 +1,11 @@
-from dash import html, Input, Output
+from dash import html, Input, Output, callback
 import dash_bootstrap_components as dbc
-from src.components import ids
+from pages.components import ids
 import random
 import datetime as dt
 
-def render(app, data):
-    @app.callback(
+def render(data):
+    @callback(
         Output(ids.RANKING_CARDS, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )

@@ -1,20 +1,17 @@
-from dash import Dash, html
+from dash import Dash, page_container, html
 from dash_bootstrap_components.themes import LUX
-from src.components.layout import create_layout
-from src.data.loader import load_tarot_data, unpivot_tarot_data
 from dash_bootstrap_templates import load_figure_template
+from pages.components.navigation import navbar
 
-DATA_PATH = "./data/tarot_dataset.csv"
 load_figure_template(LUX)
 
-
-data = load_tarot_data(DATA_PATH)
-unpivot_data = unpivot_tarot_data(data)
-app = Dash(__name__, external_stylesheets=[LUX])
+app = Dash(__name__, external_stylesheets=[LUX], use_pages=True)
 server = app.server
-app.title = "Tarot dashboard"
-app.layout = create_layout(app, data, unpivot_data)
-app.run()
+app.title = "Tarot Du Dimanche"
+app.layout = html.Div([
+    navbar.render(),
+    page_container
+])
 
 
 if __name__ == "__main__":

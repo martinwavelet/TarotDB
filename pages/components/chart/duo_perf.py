@@ -1,10 +1,10 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc
-from src.components import ids
+from pages.components import ids
 import datetime as dt
 
-def render(app: Dash, data) -> html.Div():
-    @app.callback(
+def render(data) -> html.Div():
+    @callback(
         Output(ids.DUO_PERF, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )
@@ -13,7 +13,7 @@ def render(app: Dash, data) -> html.Div():
         if filtered_data.shape[0] == 0:
             return html.Div("No data selected")
 
-        processed_data = filtered_data.groupby(["preneur", "teammate"])["count", "contrat_rempli"].sum().reset_index()
+        processed_data = filtered_data.groupby(["preneur", "teammate"])[["count", "contrat_rempli"]].sum().reset_index()
         equipe=[]
         p1=[]
         p2=[]
@@ -29,7 +29,7 @@ def render(app: Dash, data) -> html.Div():
         processed_data["p1"] = p1
         processed_data["p2"] = p2
 
-        final_data = processed_data.groupby(["p1", "p2"])["count", "contrat_rempli"].sum().reset_index()
+        final_data = processed_data.groupby(["p1", "p2"])[["count", "contrat_rempli"]].sum().reset_index()
         final_data["taux_victoire"] = final_data["contrat_rempli"] / final_data["count"]
         total_hand = final_data["count"].sum()
         final_data["taux_occurence"] = final_data["count"] / total_hand

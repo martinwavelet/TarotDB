@@ -1,6 +1,6 @@
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
-from src.components import ids
+from pages.components import ids
 
 def render(app: Dash, data) -> html.Div():
     @app.callback(

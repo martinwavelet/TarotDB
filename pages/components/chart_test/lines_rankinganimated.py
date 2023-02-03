@@ -1,10 +1,10 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
-from src.components import ids
+from pages.components import ids
 import plotly.graph_objects as go
 import datetime as dt
 
-def render(app: Dash, data) -> html.Div():
+def render(data) -> html.Div():
     color_map = {
         "Seb": "#80ffa8",
         "Martin": "#80bfff",
@@ -13,7 +13,7 @@ def render(app: Dash, data) -> html.Div():
         "Simon": "#ff8080"
     }
 
-    @app.callback(
+    @callback(
         Output(ids.LINES_RANKING_ANIMATED, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )

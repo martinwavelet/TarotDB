@@ -1,15 +1,15 @@
 import dash_bootstrap_components as dbc
 import pandas as pd
-from dash import Dash, html, dcc
+from dash import Dash, html, dcc, callback
 from dash.dependencies import Input, Output
 
-from src.components import ids
+from pages.components import ids
 
 
-def render(app: Dash, data: pd.DataFrame) -> html.Div():
+def render(data: pd.DataFrame) -> html.Div():
     all_takers = data.preneur.unique().tolist()
 
-    @app.callback(
+    @callback(
         Output(ids.TAKER_DROPDOWN, "value"),
         Input(ids.SELECT_ALL_TAKER_BUTTON, "n_clicks")
     )

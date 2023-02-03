@@ -1,10 +1,10 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
-from src.components import ids
+from pages.components import ids
 import datetime as dt
 import plotly.graph_objects as go
 
-def render(app: Dash, data) -> html.Div():
+def render(data) -> html.Div():
     player_color = {
         "Seb": "rgba(128, 255, 168, 0.5)",
         "Martin": "rgba(128, 191, 255, 0.5)",
@@ -13,7 +13,7 @@ def render(app: Dash, data) -> html.Div():
         "Simon": "rgba(255, 128, 128, 0.5)"
     }
 
-    @app.callback(
+    @callback(
         Output(ids.SANKEY_CHART, "children"),
         [Input(ids.SEASON_DROPDOWN, "value"), Input(ids.TAKER_DROPDOWN, "value"), Input(ids.CONTRACT_DROPDOWN, "value"), Input(ids.DATE_DROPDOWN, "value")]
     )

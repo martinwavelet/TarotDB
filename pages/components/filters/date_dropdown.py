@@ -2,9 +2,9 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
-from src.components import ids
+from pages.components import ids
 
-def render(app: Dash, data: pd.DataFrame) -> html.Div():
+def render(data: pd.DataFrame) -> html.Div():
     all_dates = data.date.dt.strftime("%Y-%m-%d").unique().tolist()
 
     return html.Div(

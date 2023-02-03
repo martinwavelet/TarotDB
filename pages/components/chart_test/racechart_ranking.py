@@ -1,5 +1,5 @@
 from dash import Dash, dcc, html, Input, Output
-from src.components import ids
+from pages.components import ids
 from raceplotly.plots import barplot
 
 def render(app: Dash, data) -> html.Div():
