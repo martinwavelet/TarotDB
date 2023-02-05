@@ -13,6 +13,7 @@ def render(app: Dash, data) -> html.Div():
         if filtered_data.shape[0] == 0:
             return html.Div("No data selected")
 
+        filtered_data = filtered_data[filtered_data.teammate != "zSeul"]
         processed_data = filtered_data.groupby(["preneur", "teammate"])["count", "contrat_rempli"].sum().reset_index()
         equipe=[]
         p1=[]
@@ -67,19 +68,19 @@ def render(app: Dash, data) -> html.Div():
                 html.Br(),
                 dbc.Row([
                     dbc.Col([
-                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-6, 0].lower()}.png",
+                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-1, 0].lower()}.png",
                                  className="duo-img-flop"),
-                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-6, 1].lower()}.png",
+                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-1, 1].lower()}.png",
                                  className="duo-img-flop-2"),
-                        html.P(f"{round(final_data.iloc[-6, 4] * 100, 1)}% de réussite", className="duo-text")
+                        html.P(f"{round(final_data.iloc[-1, 4] * 100, 1)}% de réussite", className="duo-text")
                     ], width=12, lg=6),
 
                     dbc.Col([
-                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-7, 0].lower()}.png",
+                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-2, 0].lower()}.png",
                                  className="duo-img-flop"),
-                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-7, 1].lower()}.png",
+                        html.Img(src=f"/assets/img/round_cards/{final_data.iloc[-2, 1].lower()}.png",
                                  className="duo-img-flop-2"),
-                        html.P(f"{round(final_data.iloc[-7, 4] * 100, 1)}% de réussite", className="duo-text")
+                        html.P(f"{round(final_data.iloc[-2, 4] * 100, 1)}% de réussite", className="duo-text")
                     ], width=12, lg=6)
                 ]),
             ])
